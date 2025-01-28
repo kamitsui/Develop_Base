@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# dummy token
+export ACTIONS_RUNTIME_TOKEN=fake-token
+export GITHUB_TOKEN=fake-token
+
+# Specific workflow file
+WORKFLOW="/app/.github/workflows/doxygen.yml"
+
+if [[ $1 == "dry" ]]; then
+	# dryrun mode ( Only check workflow syntax )... does not docker run
+	act -W ${WORKFLOW} -n --container-architecture linux/amd64
+else
+	# Flag to ensure compatibility (My PC chip is ARM, but may require x86_64(AMD64))
+	act -W ${WORKFLOW} --container-architecture linux/amd64
+	#act -W ${WORKFLOW} -j build --verbose --container-architecture linux/amd64 # debug
+fi
