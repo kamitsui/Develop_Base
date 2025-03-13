@@ -138,6 +138,52 @@ other memo</h2>
 <div class="line">docker-compose build service_name</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
 Refer</h2>
+<p>docker.com : <a href="https://www.docker.com/ja-jp/blog/introducing-docker-build-checks/">build check</a></p>
+<div class="fragment"><div class="line"># Build and Run container (develop environment)</div>
+<div class="line">docker-compose up --build -d</div>
+<div class="line"> </div>
+<div class="line"># End using Cub3D container : stop &amp; remove</div>
+<div class="line">docker-compose down</div>
+<div class="line"> </div>
+<div class="line"># Inter cub3D container</div>
+<div class="line">docker-compose exec cub3d /bin/bash</div>
+<div class="line"># or</div>
+<div class="line">docker exec -it cub3d /bin/bash</div>
+<div class="line"> </div>
+<div class="line"># Execute XQuartz and Allow access to XQuartz</div>
+<div class="line">xhost + localhost</div>
+<div class="line"> </div>
+<div class="line"># Display on host-docker from cub3d-container</div>
+<div class="line"># Simple test ... call by cub3d-conatiner</div>
+<div class="line">xeyes</div>
+<div class="line"> </div>
+<div class="line"># Security Note : Revoke access to XQuartz</div>
+<div class="line">xhost - localhost</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
+other memo</h2>
+<div class="fragment"><div class="line"># Storage driver is currently using</div>
+<div class="line">docker info</div>
+<div class="line"> </div>
+<div class="line"># Show the disk space used</div>
+<div class="line">docker system df</div>
+<div class="line"> </div>
+<div class="line"># Remove unused objects</div>
+<div class="line">docker system prune # All Object : container, network, image, volume with option</div>
+<div class="line">docker container prune # Remove stopped containers</div>
+<div class="line">docker image prune  # Remove unused images (-f : skip / -a : all)</div>
+<div class="line">docker volume prune # Only Volume</div>
+<div class="line"> </div>
+<div class="line"># BuiltKit for speedy building</div>
+<div class="line">export DOCKER_BUILDKIT=1</div>
+<div class="line">docker-compose build</div>
+<div class="line"># Local build cache</div>
+<div class="line">docker build --cache-form=my-cached-image .</div>
+<div class="line"># Paralel build in multiple service</div>
+<div class="line">docker-compose build --parallel</div>
+<div class="line"># Only specific servife</div>
+<div class="line">docker-compose build service_name</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
+Refer</h2>
 <p>docker.com : <a href="https://www.docker.com/ja-jp/blog/introducing-docker-build-checks/">build check</a> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
