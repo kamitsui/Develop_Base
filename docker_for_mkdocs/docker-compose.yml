@@ -1,0 +1,13 @@
+services:
+  mkdocs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ${MKDOCS_PATH:-..}:/mkdocs
+      - ~/.ssh:/root/.ssh
+    ports:
+      - "8000:8000"
+    container_name: "mkdocs-env"
+    stdin_open: true
+    tty: true
