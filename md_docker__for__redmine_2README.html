@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Title Name: Develop base repository</title>
+<title>Title Name: README</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('dev_base.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('md_docker__for__redmine_2README.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -90,45 +90,35 @@ $(document).ready(function(){initNavTree('dev_base.html',''); initResizable(); }
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Develop base repository</div></div>
+  <div class="headertitle"><div class="title">README</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2><a class="anchor" id="autotoc_md20"></a>
-How to use</h2>
-<div class="fragment"><div class="line">PROJECT_NAME=&#39;cub3d&#39;</div>
-<div class="line">git clone --recursive git@github.com:kamitsui/Develop_Base.git ${PROJECT_NAME}</div>
-<div class="line">cd ${PROJECT_NAME}</div>
-<div class="line">NEW_REPOSITORY=&#39;cpp_module&#39;</div>
-<div class="line">git remote set-url origin ${NEW_REPOSITORY}</div>
-<div class="line">mv README.md docs/dev_base.md</div>
-<div class="line">mv _README.md README.md</div>
-<div class="line">vim README.md # fix for project</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md21"></a>
-Features in this repository</h2>
+<div class="textblock"><div class="fragment"><div class="line">docker run -p3000:3000 -v$PWD/sqlite:/usr/src/redmine/sqlite -v$PWD/files:/usr/src/redmine/files -d redmine:4.2.9-alpine</div>
+</div><!-- fragment --><hr  />
+<h2><a class="anchor" id="autotoc_md13"></a>
+make directory for mount docker container</h2>
+<div class="fragment"><div class="line">mkdir ../redmine_file_data</div>
+<div class="line">mkdir ../redmine_db_data</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
+SSH key</h2>
 <ol type="1">
-<li>Develop Environ with using docker <blockquote class="doxtable">
-<p>&zwj;docker/README.md</p>
-<p>ubuntu:22.04 base</p>
-<p>C language, X11 </p>
-</blockquote>
-</li>
-<li>Documentation tools <blockquote class="doxtable">
-<p>&zwj;doxygen : generate documentation in project</p>
-<p>live-server : preview on local browser </p>
-</blockquote>
-</li>
-<li>CI/CD <blockquote class="doxtable">
-<p>&zwj;check local test : <a class="el" href="deploy__test__github__act_8sh_source.html">scripts/deploy_test_github_act.sh</a></p>
-<p>GitHub Actions : deploy documentation to GitHub Pages (.<a class="el" href="doxygen_8yml_source.html">github/workflows/doxygen.yml</a>) </p>
-</blockquote>
-</li>
+<li>Generate key pare ( Redmine exclusive ) <div class="fragment"><div class="line">ssh-keygen -t ed25519 -C &quot;redmine-github-deploy-key&quot; -f redmine_github_deploy_key</div>
+</div><!-- fragment --></li>
+<li>Add publick key to GitHub</li>
+<li>Mount key in the Redmine container example <div class="fragment"><div class="line">version: &quot;3.8&quot;</div>
+<div class="line">services:</div>
+<div class="line">  redmine:</div>
+<div class="line">    # ... your other redmine configurations ...</div>
+<div class="line">    volumes:</div>
+<div class="line">      - ./redmine_github_deploy_key:/root/.ssh/id_ed25519 #mount the private key.</div>
+<div class="line">      - ./git-repo:/usr/src/redmine/git-repo #mount your local git repository.</div>
+<div class="line">      - redmine_data:/usr/src/redmine/files</div>
+<div class="line">    # ...</div>
+<div class="line">    command: bash -c &quot;chmod 600 /root/.ssh/id_ed25519 &amp;&amp; bundle exec rails server -b 0.0.0.0&quot; #set correct permissions.</div>
+<div class="line">volumes:</div>
+<div class="line">  redmine_data:</div>
+</div><!-- fragment --> </li>
 </ol>
-<h2><a class="anchor" id="autotoc_md22"></a>
-About</h2>
-<ul>
-<li>Intra name : <a href="https://profile.intra.42.fr/users/kamitsui">kamitsui</a> / GitHub : <a href="https://github.com/kamitsui">kamitsui</a></li>
-</ul>
-<p>Joined the 42Tokyo in the same year (2023.1) </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

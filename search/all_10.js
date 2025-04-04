@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['with_20docker_0',['Develop environ with docker',['../docker.html',1,'']]]
+  ['us_0',['About us',['../readme.html#autotoc_md5',1,'']]],
+  ['use_1',['use',['../readme.html#autotoc_md1',1,'How to use'],['../dev_base.html#autotoc_md20',1,'How to use']]],
+  ['use_20tester_2',['How to use Tester',['../readme.html#autotoc_md3',1,'']]],
+  ['usefull_20alias_3',['Usefull alias',['../readme.html#autotoc_md2',1,'']]]
 ];

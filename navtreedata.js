@@ -28,6 +28,7 @@ var NAVTREE =
     [ "(仮)Cub3D project overview in 42 Cursus", "index.html", "index" ],
     [ "README.md", "readme.html", null ],
     [ "Develop environ with docker", "docker.html", null ],
+    [ "README", "md_docker__for__redmine_2README.html", null ],
     [ "Develop base repository", "dev_base.html", null ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ]
@@ -37,7 +38,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"deploy__test__github__act_8sh_source.html"
+"build__redmine_8sh_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

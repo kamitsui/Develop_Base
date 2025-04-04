@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['tester_0',['How to use Tester',['../readme.html#autotoc_md3',1,'']]],
-  ['this_20repository_1',['Features in this repository',['../dev_base.html#autotoc_md18',1,'']]],
-  ['to_20use_2',['to use',['../readme.html#autotoc_md1',1,'How to use'],['../dev_base.html#autotoc_md17',1,'How to use']]],
-  ['to_20use_20tester_3',['How to use Tester',['../readme.html#autotoc_md3',1,'']]]
+  ['score_0',['Score',['../readme.html#autotoc_md0',1,'']]],
+  ['ssh_20key_1',['SSH key',['../md_docker__for__redmine_2README.html#autotoc_md14',1,'']]]
 ];
