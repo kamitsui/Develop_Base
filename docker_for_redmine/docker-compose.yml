@@ -1,0 +1,81 @@
+version: "3.8"
+
+services:
+
+  # DataBase
+  db:
+    image: postgres:13
+    container_name: pm_db
+    environment:
+      POSTGRES_USER: redmine
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: redmine
+    volumes:
+      - type: bind
+        source: ${REDMINE_DB_DATA}
+        #source: ../redmine_db_data
+        target: /var/lib/postgresql/data
+    restart: always
+
+  # Redmine
+  redmine:
+    image: redmine:latest
+    container_name: pm_redmine
+    ports:
+      - "3000:3000"
+    environment:
+      TZ: Asia/Tokyo
+      REDMINE_DB_ADAPTER: postgresql
+      REDMINE_DB_HOST: postgresql
+      #REDMINE_DB_HOST: db
+      REDMINE_DB_PORT: 5432
+      REDMINE_DB_USER: redmine
+      REDMINE_DB_PASSWORD: password
+      REDMINE_DB_NAME: redmine
+      REDMINE_PLUGINS_MIGRATE: 1
+        #REDMINE_RELATIVE_URL_ROOT: /redmine #optional, if you want redmine in a subdirectory
+
+    # Mount Volumes
+    volumes:
+
+      # ssh key
+      - type: bind
+        source: ./redmine_github_deploy_key
+        target: /root/.ssh/id_ed25519
+
+      # ssh config
+      - type: bind
+        source: ssh/config
+        target: /root/.ssh/config
+
+      # Git repository
+      - type: bind
+        source: ./tmp-repo
+        target: /usr/src/redmine/git-repo # Mount the Git repository
+
+      # Redmine file buckup
+      - type: bind
+        source: ../pm_redmine_data
+        target: /usr/src/redmine/files
+
+    depends_on:
+      - db
+
+    # Set permission ( readable only by root user )
+    #command: bash -c "chmod 600 /root/.ssh/id_ed25519 && bundle exec rails server -b 0.0.0.0" #set correct permissions.
+
+    restart: always
+
+      #volumes:
+      #  tmp-repo:
+      #    name: redmine-git-repo-cpp01
+      #    driver: local
+      #  ../pm_redmine_data:
+      #    name: pm_redmine-data
+      #    driver: local
+      #  ../pm_db_data:
+      #    name: pm_db-data
+      #    driver: local
+      #  host_ssh:
+      #    name: redmine-host-ssh
+      #    driver: local
