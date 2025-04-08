@@ -31,14 +31,15 @@ find_dot_env()
 
 link_venv_to_prjdir()
 {
-	local cmd="ln -s ${PWD} ${PRJ_DIR}/venv"
+	local symlink_name="${PRJ_DIR}/python_m_venv"
+	local cmd="ln -s ${PWD} ${symlink_name}"
 
 	read -p "${cmd} ... execute? (y/n): " yn
 	if [[ ! $yn == [yY] ]]; then
 		return 1
 	fi
-	if [ -L "${PRJ_DIR}/venv" ];then
-		echo "exist ${PRJ_DIR}/venv"
+	if [ -L "${symlink_name}" ];then
+		echo "exist ${symlink_name}"
 		return 1
 	fi
 	${cmd}
