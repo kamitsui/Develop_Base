@@ -29,7 +29,20 @@ var NAVTREE =
     [ "README.md", "readme.html", null ],
     [ "Develop environ with docker", "docker.html", null ],
     [ "README", "md_docker__for__redmine_2README.html", null ],
-    [ "Develop base repository", "dev_base.html", null ],
+    [ "Python module venv", "md_python__m__venv_2README.html", [
+      [ "How to use", "md_python__m__venv_2README.html#autotoc_md21", null ]
+    ] ],
+    [ "list of requirements", "md_python__m__venv_2requirements_2list.html", null ],
+    [ "Develop base repository", "dev_base.html", [
+      [ "Docker env", "dev_base.html#autotoc_md28", [
+        [ "How to use", "dev_base.html#autotoc_md29", null ],
+        [ "Features in this repository", "dev_base.html#autotoc_md30", null ]
+      ] ],
+      [ "</blockquote>", "dev_base.html#autotoc_md31", null ],
+      [ "Python module venv", "dev_base.html#autotoc_md32", [
+        [ "About", "dev_base.html#autotoc_md34", null ]
+      ] ]
+    ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ]
     ] ]

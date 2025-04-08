@@ -1,7 +1,7 @@
 var indexSectionsWithContent =
 {
-  0: "4abcdefhikmoprstuwノ仕仮学概関",
-  1: "4bcdeimoprw仮"
+  0: "4abcdefhiklmoprstuvwノ仕仮学概関",
+  1: "4bcdeilmoprvw仮"
 };
 
 var indexSectionNames =

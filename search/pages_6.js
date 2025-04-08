@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['md_0',['README.md',['../readme.html',1,'']]]
+  ['list_20of_20requirements_0',['list of requirements',['../md_python__m__venv_2requirements_2list.html',1,'']]]
 ];
