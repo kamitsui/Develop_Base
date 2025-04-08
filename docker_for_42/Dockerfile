@@ -60,6 +60,8 @@ RUN DEBIAN_PRIORITY=critical apt-get update && apt-get install -y \
 	wget \
 	vim fzf \
 	silversearcher-ag \
+	# google test\
+	libgtest-dev \
 	# documantation \
 	doxygen \
 	graphviz \
