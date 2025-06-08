@@ -7,13 +7,12 @@ build by python3.13 on macOS (that is installed by brew install tools)
 #### `python_m_venv` is own environ of python project.
 
 ```
-tree -a python_m_venv
-python_m_venv
-├── .env                   # define PRJ_DIR
+/path/to/python_m_venv
+├── .env                   # define PRJ_DIR for using in setup_project_env.sh
 ├── requirements           # include requirements.txt for my project
 │   ├── list.md
 │   └── musicbox.txt
-└── setup_project_env.sh   # create venv and link project
+└── setup_project_env.sh   # create venv and symlink in PRJ_DIR
 ```
 
 #### Create venv and Link project ( PRJ_DIR/venv -> venv )

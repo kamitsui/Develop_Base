@@ -1,49 +1,127 @@
-# Develop base repository	{#dev_base}
+# Devlop Environment Manager
 
----
+This `dev_env_manager` repository helps you quickly set up and manage different development environments, including Docker-based containers, Doxygen documentation tools, and Python virtual environments.
 
-## Docker env
 
-### How to use
+***
+
+## 🚀 Getting Started
+
 ```{.sh}
-PROJECT_NAME='cub3d'
-git clone --recursive git@github.com:kamitsui/Develop_Base.git ${PROJECT_NAME}
-cd ${PROJECT_NAME}
-NEW_REPOSITORY='cpp_module'
-git remote set-url origin ${NEW_REPOSITORY}
-mv README.md docs/dev_base.md
-mv _README.md README.md
-vim README.md # fix for project
+# Clone this repository
+git clone *** dev_env_manager
+cd dev_env_manager
+
+# Define project directory
+echo "PRJ_DIR=/path/to/project" > ./env
 ```
 
-### Features in this repository
+***
 
-1. Develop Environ with using docker
-> [docker/README.md](docker/README.md)
->
-> ubuntu:22.04 base
->
-> C language, X11
+## 📁 Repository Structure
 
-2. Documentation tools
-> doxygen : generate documentation in project
->
-> live-server : preview on local browser
+```
+.
+├── .env                          # Environment variables for setup.sh (EDIT THIS!)
+├── setup.sh                      # Main setup script to configure environments
+├── README.md                     # You are reading this!
+├── docker/                       # Contains Docker configurations
+│   ├── 42/                       #   └── Docker Compose setup for 42cursus projects
+│   │   ├── Dockerfile
+│   │   ├── README.md
+│   │   └── docker-compose.yml
+│   └── mkdocs/                   #   └── Docker Compose setup for MkDocs documentation
+│       ├── Dockerfile
+│       ├── README.md
+│       └── docker-compose.yml
+├── doxygen/                      # Doxygen documentation setup
+│   ├── doxygen-awesome-css/      #   └── Submodule for Doxygen Awesome CSS theme
+│   ├── Doxyfile                  #   └── Base Doxyfile
+│   ├── setup_doxygen.sh          #   └── Helper script to configure Doxygen
+│   ├── deploy_test_github_act.sh #   └── Script for deploying test documentation (e.g., GH Actions)
+│   ├── watch_doxygen.sh          #   └── Script to watch and rebuild Doxygen docs
+│   └── index.md                  #   └── Base Markdown for Doxygen main page
+└── python_m_venv/                # Python virtual environment setup
+    ├── README.md
+    ├── requirements              #   └── Python package requirements
+    ├── setup_project_env.sh      #   └── Script to create and configure venv
+    └── venv                      #   └── (Actual venv created by setup script)
+```
 
-3. CI/CD
-> check local test : scripts/deploy_test_github_act.sh
->
-> GitHub Actions : deploy documentation to GitHub Pages (.github/workflows/doxygen.yml)
+***
 
----
+## 🛠️ Usage: `setup.sh`
 
-## Python module venv
+### 1. Docker Environments
 
-[README.md](python_m_venv/README.md)
+This command creates a symbolic link from the specified Docker configuration directory in this repository to `$(PRJ_DIR)/docker`. 
 
----
+* For 42cursus:
+```{.sh}
+./setup.sh docker 42
+```
+This creates: `${PRJ_DIR}/docker` -> `dev-env-manager/docker/42` (symlink)
 
-### About
+* For MkDocs:
+```{.sh}
+# Create a symlink : 
+./setup.sh python
+```
+This creates: `${PRJ_DIR}/python_m_venv` -> `./python_m_venv` (symlink)
+
+### 2. Doxygen Documentation
+
+This command sets up Doxygen for your project.
+
+```{.sh}
+./setup.sh doxygen
+```
+
+This performs the following actions:
+
+* Calls `doxygen/setup_doxygen.sh`.
+* Creates `$(PRJ_DIR)/docs` directory.
+* Copies `Doxyfile`, `deploy_test_github_act.sh`, `watch_doxygen.sh`, and `index.md` into `$(PRJ_DIR)/docs`.
+* Creates a symbolic link: `$(PRJ_DIR)/docs/doxygen-awesome-css` -> `dev-env-manager/doxygen/doxygen-awesome-css`
+
+### 3. Python virtual environment
+
+This command sets up a Python virtual environment for your project.
+
+```{.sh}
+./setup.sh python
+```
+
+This creates a symbolic link:
+`$(PRJ_DIR)/python_m_venv` -> `dev-env-manager/python_m_venv` (symlink)
+
+***
+
+## 📝 Notes
+
+* Symlinks: This setup heavily relies on symbolic links (`ln -s`). Ensure your system supports them and you understand their behavior.
+* Absolute Paths: `PRJ_DIR` must be an absolute path for `setup.sh` to work correctly from any location.
+* Customization: After setup, you might need to customize the copied `Doxyfile` or `docker-compose.yml` files within your `PRJ_DIR` to fit specific project requirements.
+* Doxygen Awesome CSS: If you encounter issues with `doxygen-awesome-css`, ensure the submodule is correctly initialized and updated within this `dev-env-manager` repository.
+
+***
+
+## Notes for each environment.
+
+* [docker/42/README.md](docker/42/README.md)
+* [python_m_venv/README.md](python_m_venv/README.md)
+
+I'm still getting ready ( preparation )
+* [docker/mkdocs/README.md](docker/mkdocs/README.md)
+* [docker/redmine/README.md](docker/redmine/README.md)
+
+***
+
+## About me
 * Intra name : [kamitsui](https://profile.intra.42.fr/users/kamitsui) / GitHub : [kamitsui](https://github.com/kamitsui)
 
 Joined the 42Tokyo in the same year (2023.1)
+
+***
+
+Feel free to open an issue or pull request if you have any questions or suggestions!
