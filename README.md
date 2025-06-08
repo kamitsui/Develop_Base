@@ -9,8 +9,9 @@ This `dev_env_manager` repository helps you quickly set up and manage different 
 
 ```{.sh}
 # Clone this repository
-git clone *** dev_env_manager
+git clone git@github.com:kamitsui/dev_env_manager.git dev_env_manager
 cd dev_env_manager
+git submodule update --init --recursive  # clone submodule (doxygen/doxygen-awesome-css)
 
 # Define project directory
 echo "PRJ_DIR=/path/to/project" > ./env
