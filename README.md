@@ -14,7 +14,7 @@ cd dev_env_manager
 git submodule update --init --recursive  # clone submodule (doxygen/doxygen-awesome-css)
 
 # Define project directory
-echo "PRJ_DIR=/path/to/project" > ./env
+echo "PRJ_DIR=/path/to/project" > .env
 ```
 
 ***
@@ -61,7 +61,7 @@ This command creates a symbolic link from the specified Docker configuration dir
 ```{.sh}
 ./setup.sh docker 42
 ```
-This creates: `${PRJ_DIR}/docker` -> `dev-env-manager/docker/42` (symlink)
+This creates: `${PRJ_DIR}/docker_42` -> `dev-env-manager/docker/42` (symlink)
 
 * For MkDocs:
 ```{.sh}
@@ -70,7 +70,7 @@ This creates: `${PRJ_DIR}/docker` -> `dev-env-manager/docker/42` (symlink)
 ```
 This creates: `${PRJ_DIR}/python_m_venv` -> `./python_m_venv` (symlink)
 
-### 2. Doxygen Documentation
+### 2. Doxygen Documentation ( ⚠️ still getting ready )
 
 This command sets up Doxygen for your project.
 
