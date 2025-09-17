@@ -58,8 +58,11 @@ RUN DEBIAN_PRIORITY=critical apt-get update && apt-get install -y \
 	git \
 	valgrind \
 	wget \
+	curl \
 	vim fzf \
 	silversearcher-ag \
+	tmux \
+	stow \
 	# google test\
 	libgtest-dev \
 	# documantation \

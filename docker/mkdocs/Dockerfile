@@ -25,7 +25,8 @@ RUN pip install --no-cache-dir \
 	mkdocs-codeinclude-plugin \
 	mkdocs-mermaid2-plugin \
 	mkdocs-glightbox \
-	mkdocs-static-i18n
+	mkdocs-static-i18n \
+	mkdocs-video
 
 # Install staticrypt globally so that the "staticrypt" command is available.
 RUN npm install -g staticrypt
